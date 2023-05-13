@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Signature Page</title>
+  <style>
+    .container {
+      width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    form label {
+      display: block;
+      margin-top: 10px;
+    }
+
+    form input[type="text"],
+    form textarea {
+      width: 100%;
+      padding: 5px;
+      margin-bottom: 10px;
+    }
+
+    button[type="submit"] {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+    }
+
+    #signature-result {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Signature Page</h1>
+    <form id="signature-form">
+      <label for="private-key">Private Key:</label>
+      <input type="text" id="private-key" name="private-key" required>
+
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" rows="4" required></textarea>
+
+      <button type="submit">Sign</button>
+    </form>
+    <div id="signature-result"></div>
+  </div>
+
+  <script>
+    document.getElementById("signature-form").addEventListener("submit", function(event) {
+      event.preventDefault(); // Prevent form submission
+
+      // Retrieve form values
+      var privateKey = document.getElementById("private-key").value;
+      var message = document.getElementById("message").value;
+
+      // Perform signature logic here
+      var signature = signMessage(privateKey, message);
+
+      // Display the signature result
+      var signatureResult = document.getElementById("signature-result");
+      signatureResult.textContent = "Signature: " + signature;
+    });
+
+    function signMessage(privateKey, message) {
+      // Your signature logic goes here
+      // Use the privateKey and message to generate the signature
+      // This is just a placeholder function, you need to implement the actual signing algorithm
+      return "SampleSignature123";
+    }
+  </script>
+</body>
+</html>

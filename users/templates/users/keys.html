@@ -1,0 +1,64 @@
+<!-- <!DOCTYPE html>
+<html>
+  <head>
+    <title>Keys</title>
+  </head>
+  <body>
+    <h1>Keys for {{ username }}</h1>
+    <h2>Private Key</h2>
+    <pre>{{ private_key }}</pre>
+    <h2>Public Key</h2>
+    <pre>{{ public_key }}</pre>
+  </body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Keys</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .keys-container {
+            margin: 0 auto;
+            max-width: 600px;
+            padding: 20px;
+            background-color: #f4f4f4;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .key-label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .key-value {
+            padding: 10px;
+            background-color: #eaeaea;
+            border-radius: 5px;
+            word-break: break-all;
+        }
+    </style>
+</head>
+<body>
+    <h1>User Keys</h1>
+    <div class="keys-container">
+        <p><span class="key-label">Username:</span> {{ username }}</p>
+        <p><span class="key-label">Private Key:</span></p>
+        <pre class="key-value">{{ private_key }}</pre>
+        <p><span class="key-label">Public Key:</span></p>
+        <pre class="key-value">{{ public_key }}</pre>
+    </div>
+</body>
+</html>
