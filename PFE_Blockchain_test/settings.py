@@ -130,5 +130,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 
-    # my crispy confg:
+
+# my crispy confg:
 CRISPY_TEMPLATE_PACK='bootstrap4'
+
+# mchi chor home 
+LOGIN_REDIRECT_URL = 'home'
