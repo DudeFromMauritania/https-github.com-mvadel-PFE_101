@@ -1,0 +1,28 @@
+{% extends 'main/base.html' %}
+
+{% block title %} Envoyer un terrain{% endblock %}
+
+{% block content %}
+<div class="profile-container">
+    <h1 class="title">Envoyer un terrain</h1>
+    <form method="POST" >
+        {% csrf_token %}
+        <div class="input-container">
+            <label for="plot_code">terrain ID:</label>
+            <input type="text" name="plot_code" id="plot_code" class="input" required>
+        </div>
+        <div class="input-container">
+            <label for="receiver_username">Destinataire :</label>
+            <input type="text" name="receiver_username" id="receiver_username" class="input" required>
+        </div>
+        <div class="input-container">
+            <label for="private_key">Private Key:</label>
+            <textarea name="private_key" id="private_key" class="input" rows="6" required></textarea>
+        </div>
+
+        <button type="submit" class="form-button">Envoyer</button>
+    </form>
+</div>
+
+{% endblock %}
+

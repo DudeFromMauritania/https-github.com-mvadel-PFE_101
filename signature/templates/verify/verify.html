@@ -1,0 +1,48 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Verify Signature{% endblock %}
+
+{% block content %}
+
+{% if verification_result is not None %}
+        <div class="message">
+            {% if verification_result %}
+                <p class="verification-success">La signature est valide</p>
+            {% else %}
+                <p class="verification-failure">La signature est invalide</p>
+            {% endif %}
+        </div>
+    {% endif %}
+
+<div class="profile-container">
+    <h1>Vérifier la signature</h1>
+    <form method="POST">
+        {% csrf_token %}
+
+        <div class="input-container" >
+            <label for="sender_username" class="form-label">Expéditeur:</label>
+            <input type="text" id="sender_username" name="sender_username" class="input" required>
+        </div>
+        
+        <div class="input-container" >
+            <label for="message" class="form-label">Destinataire:</label>
+            <input type="text" name="receiver_username" id="receiver_username" class="input"  required><br>
+        </div>
+
+        <div class="input-container" >
+            <label for="plot_code" class="form-label">terrain ID:</label>
+            <input type="text" name="plot_code" id="plot_code" class="input"  required><br><br>
+        </div>
+
+        <div class="input-container">
+            <label for="signature" class="form-label">Signature:</label>
+            <input type="text" id="signature" name="signature" class="input"  required>
+        </div>
+
+        <button type="submit" class="form-button">Vérifier</button>
+    </form>
+</div>
+
+
+{% endblock %}
+

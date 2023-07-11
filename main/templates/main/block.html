@@ -1,0 +1,48 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Block Search{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="title">Recherche de bloc</h1>
+    <form method="POST" action="">
+        {% csrf_token %}
+        <div class="input-container">
+            <input type="text" name="id" class="input" placeholder=" entrer l'identifiant du bloc">
+        </div>
+        <div class="button-container">
+            <button type="submit" class="submit-button">
+                <span>Recherche 🔎</span>
+            </button>
+        </div>
+    </form>
+</div>
+
+
+{% if block_id %}
+<div class="profile-container">
+    <h2>Block ID: {{ block_id }}</h2>
+    <p class="key-label">Previous Hash : "<a>{{ prev_hash }}</a>"</p>
+    <p class="key-label">Current Hash : "<a>{{ current_hash }}</a>"</p>
+
+<br>
+    <h3>Transactions:</h3>
+    <ul>
+        {% for transaction in transactions %}
+        <h4 class="transaction-id">Transaction ID: {{ transaction.id }}</h4>
+        <div class="transaction-details key-row">
+            <p class="key-label">terrain ID :  <a> {{ transaction.plot_code }}</a></p>
+            <p class="key-label">Expéditeur :  <a> {{ transaction.sender_username }}</a></p>
+            <p class="key-label">Destinataire :  <a> {{ transaction.receiver_username }}</a></p>
+            <p class="key-label">Signature:</p>
+            <pre  class="key-value" id="public-key">{{ transaction.signature }}</pre>
+            <br>
+        </div>
+
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+
+{% endblock %}
+

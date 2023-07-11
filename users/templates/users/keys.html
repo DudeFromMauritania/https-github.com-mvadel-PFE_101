@@ -1,64 +1,42 @@
-<!-- <!DOCTYPE html>
-<html>
-  <head>
-    <title>Keys</title>
-  </head>
-  <body>
-    <h1>Keys for {{ username }}</h1>
-    <h2>Private Key</h2>
-    <pre>{{ private_key }}</pre>
-    <h2>Public Key</h2>
-    <pre>{{ public_key }}</pre>
-  </body>
-</html> -->
+{% extends 'main/base.html' %}
 
+{% block title %}User Keys{% endblock %}
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>User Keys</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-        }
+{% block content %}
+    <div class="profile-container">
+        <h1 class="title ttt">User Keys</h1>
+        <p class="important-message">
+            ☠️☠️☠️IMPORTANT Veuillez enregistrer votre clé privée dans un endroit sûr. La clé privée ne vous sera présentée qu'une seule fois.</p>
         
-        h1 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        
-        .keys-container {
-            margin: 0 auto;
-            max-width: 600px;
-            padding: 20px;
-            background-color: #f4f4f4;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        
-        .key-label {
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        
-        .key-value {
-            padding: 10px;
-            background-color: #eaeaea;
-            border-radius: 5px;
-            word-break: break-all;
-        }
-    </style>
-</head>
-<body>
-    <h1>User Keys</h1>
-    <div class="keys-container">
-        <p><span class="key-label">Username:</span> {{ username }}</p>
-        <p><span class="key-label">Private Key:</span></p>
-        <pre class="key-value">{{ private_key }}</pre>
-        <p><span class="key-label">Public Key:</span></p>
-        <pre class="key-value">{{ public_key }}</pre>
+        <div class="keys-container">
+            <div class="key-row">
+                <pre>Username:</pre>
+                <pre class="key-value" id="username">{{ username }}</pre>
+            </div>
+            <div class="key-row">
+                <pre>Private Key:</pre>
+                <pre class="key-value" id="private-key">{{ private_key }}</pre>
+            </div>
+            <div class="key-row">
+                <pre >Public Key:</pre>
+                <pre class="key-value" id="public-key">{{ public_key }}</pre>
+            </div>
+
+        </div>
+            <div class="download-buttons">
+                <button onclick="downloadPDF()">Download as PDF</button>
+              </div>
     </div>
-</body>
-</html>
+
+      
+    
+    
+    
+    
+{% endblock %}
+
+
+
+
+
+<!--  sala7 dark mode public_key vih new line use it  -->

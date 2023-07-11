@@ -1,11 +1,43 @@
-<!DOCTYPE html>
-<html>
-<head>
+{% extends 'main/base.html' %}
 
-</head>
-<body>
-    {% for post in posts%}
-        <h1>{{post.name}} age is {{post.age}}</h1>
-    {% endfor%}
-</body>
-</html>
+{% block content %}
+    <h1>Blocks 📦☁️</h1>
+
+    {% for block in page_obj %}
+    <div class="profile-container">
+        <h2>Block ID : {{ block.id }} </h2>
+        <p class="key-label key-value">Previous Hash : "<a>{{ block.prev_hash }}</a>"</p>
+        <p class="key-label key-value">Current Hash : "<a>{{ block.current_hash }}</a>"</p>
+        <div class="transaction-box">
+            <button class="transaction-btn"> Transaction</button>
+            <div class="transaction-details" style="display: none;">
+                <h3>Transactions:</h3>
+                <ul class="transaction-list">
+                    {% for transaction in block.transactions %}
+                        <p class="key-label">terrain ID:  <a> {{ transaction.plot_code }}</a></p>
+                        <p class="key-label">Expéditeur :  <a> {{ transaction.sender_username }}</a></p>
+                        <p class="key-label">Destinataire :  <a> {{ transaction.receiver_username }}</a></p>
+                        <p class="key-label">Signature:</p>
+                        <pre  class="key-value" id="public-key">{{ transaction.signature }}</pre>
+                        <br>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+        <p>No blocks found.</p>
+
+        {% endfor %}
+
+    <div class="pagination">
+        {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+        {% endif %}
+        <span class="current-page">{{ page_obj.number }}</span>
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">Next</a>
+        {% endif %}
+    </div>
+
+{% endblock %}

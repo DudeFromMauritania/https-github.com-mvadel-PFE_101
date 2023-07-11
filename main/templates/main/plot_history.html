@@ -1,0 +1,48 @@
+{% extends 'main/base.html' %}
+
+{% block title %}L'historique du terrain{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="title">L'historique foncier</h1>
+    <form method="POST" action="">
+        {% csrf_token %}
+        <div class="input-container">
+            <input type="text" name="plot_code" id="plot_code" class="input" pattern="\d+" placeholder="Entrez le terrain ID">
+        </div>
+        <div class="button-container">
+            <button type="submit" class="submit-button">
+                <span>Obtenir l'historique 🔎</span>
+            </button>
+        </div>
+    </form>
+</div>
+
+{% if plot_code %}
+<div class="profile-container">
+    <h2>terrain ID: {{ plot_code }}</h2>
+    <p class="key-label">Note :</p>
+    <pre  class="key-value" id="public-key">{{ note }}</pre>
+    <br>
+    <h3>Transactions:</h3>
+    <ul>
+        {% for transaction in transactions %}
+        <h4 class="transaction-id">Transaction ID: {{ transaction.id }}</h4>
+        <div class="transaction-details key-row">
+
+            <p class="key-label">Expéditeur :  <a> {{ transaction.sender_username }}</a></p>
+            <p class="key-label">Destinataire :  <a> {{ transaction.receiver_username }}</a></p>
+
+            <p class="key-label">Signature :</p>
+            <pre  class="key-value" id="public-key">{{ transaction.signature }}</pre>
+        </div>
+
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+
+{% endblock %}
+
+
+

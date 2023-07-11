@@ -1,0 +1,20 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Profil{% endblock %}
+
+{% block content %}
+<div class="profile-container">
+    <h1>User Profile</h1>
+    <p><span class="profile-label">Identifiant de l'utilisateur  ID:</span> {{ user_id }}</p>
+    <p><span class="profile-label">Public Key:</span></p>
+    <pre class="profile-value">{{ public_key }}</pre>
+    <p><span class="profile-label">Tous les terrains que vous possédez :</span></p>
+    <div class="plot-codes-container">
+        <ul class="plot-codes">
+            {% for plot_code in all_plot_code %}
+            <li>{{ plot_code }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}
